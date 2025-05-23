@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./css/Home.css";
-import poster from "../component/assets/poster.jpg"; // Main poster
-import aboutImage from "../component/assets/about.jpg"; // About section image
-import game1 from "../component/assets/game1.png"; // Game suggestions
-import game2 from "../component/assets/game2.png";
-import game3 from "../component/assets/game3.png";
+import poster from "../component/assets/poster.jpg";       // Main poster
+import aboutImage from "../component/assets/about.jpg";    // About section image
+import game1 from "../component/assets/game1.png";        // 3D Lab
+import game2 from "../component/assets/game2.png";        // 3D Animation
+import game3 from "../component/assets/game3.png";        // Games
 
 const Home = () => {
   return (
@@ -14,36 +15,40 @@ const Home = () => {
         <img src={poster} alt="Krypton Poster" className="poster-img" />
       </section>
 
-    
-
-      {/* Most Researched Topics */}
-      <section className="trending">
-        <h2> Most Researched Education Topics</h2>
-        <ul>
-          <li> AI in Education</li>
-          <li>Virtual & Augmented Reality Learning</li>
-          <li> Gamification in STEM</li>
-          <li> Adaptive Learning Platforms</li>
-          <li> Coding for Kids</li>
-        </ul>
-      </section>
-
       {/* Games Suggestion Section */}
       <section className="games">
-        <h2>🎮 Try These Educational Games</h2>
+      <h2 style={{
+  fontFamily: "'Orbitron', sans-serif",
+  fontSize: "2rem",
+  fontWeight: 600,
+  color: "#ffffff",
+  textAlign: "center",
+  margin: "2rem 0",
+  lineHeight: "1.4",
+  textShadow: "2px 2px 6px rgba(0, 0, 0, 0.6)",
+}}>
+  Step Into Our Immersive 3D Experience And Explore Science Experiments
+  Safely And Interactively
+</h2>
+
         <div className="game-list">
-          <div className="game-item">
-            <img src={game1} alt="Game 1" />
-            <h3>Code Quest</h3>
-          </div>
-          <div className="game-item">
-            <img src={game2} alt="Game 2" />
-            <h3>Math Adventure</h3>
-          </div>
-          <div className="game-item">
-            <img src={game3} alt="Game 3" />
-            <h3>Physics Simulator</h3>
-          </div>
+          {/* 3D Lab */}
+          <Link to="/3dlab" className="game-item">
+            <img src={game1} alt="3D Lab" />
+            <h3>3D Lab</h3>
+          </Link>
+
+          {/* 3D Animation */}
+          <Link to="/3danimation" className="game-item">
+            <img src={game2} alt="3D Animation" />
+            <h3>3D Animation</h3>
+          </Link>
+
+          {/* Games */}
+          <Link to="/games" className="game-item">
+            <img src={game3} alt="Games" />
+            <h3>Games</h3>
+          </Link>
         </div>
       </section>
 
@@ -53,12 +58,14 @@ const Home = () => {
           <div className="about-text">
             <h2>About Krypton</h2>
             <p>
-              Krypton is a revolutionary learning platform that integrates AI, gamification, 
-              and immersive education techniques to make learning fun and engaging.
+              Krypton is a revolutionary learning platform that integrates AI,
+              gamification, and immersive education techniques to make learning
+              fun and engaging.
             </p>
             <p>
-              We provide interactive content, real-world simulations, and personalized learning 
-              experiences for students across various domains.
+              We provide interactive content, real-world simulations, and
+              personalized learning experiences for students across various
+              domains.
             </p>
           </div>
         </div>
