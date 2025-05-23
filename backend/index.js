@@ -8,11 +8,15 @@ const port = 4000;
 const JWT_SECRET = "secret_ecom";
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'auth-token']
+}));
 
 // MongoDB Connection
 mongoose
-  .connect("mongodb+srv://kishanchannesh19:Pikupiku@cluster0.od9qk.mongodb.net/Piku")
+  .connect("mongodb+srv://kishanchannesh19:Pikupiku@cluster0.od9qk.mongodb.net/Krypton")
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.error("MongoDB connection failed:", err));
 
@@ -50,7 +54,7 @@ app.post("/signup", async (req, res) => {
     if (existing) return res.status(400).json({ success: false, errors: "Email already registered" });
 
     const user = new User({
-      name: req.body.username,
+      name: req.body.name,
       email: req.body.email,
       password: req.body.password,
     });

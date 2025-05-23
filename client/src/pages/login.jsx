@@ -18,7 +18,7 @@ const Login = () => {
 
     // Map 'name' to 'username' for signup API, keep original for login
     const payload = isSignup
-      ? { username: formData.name, email: formData.email, password: formData.password }
+      ? { name: formData.name, email: formData.email, password: formData.password }
       : { email: formData.email, password: formData.password };
 
     const endpoint = isSignup ? "/signup" : "/login";
