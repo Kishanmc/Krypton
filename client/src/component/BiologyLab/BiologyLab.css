@@ -1,0 +1,43 @@
+.bio-lab-container {
+  padding: 3rem 2rem;
+  background: linear-gradient(to right, #004d4d, #002626);
+  min-height: 100vh;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+}
+
+.bio-lab-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.bio-lab-container p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+.bio-tools {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.bio-card {
+  background-color: #003333;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.bio-card:hover {
+  transform: scale(1.05);
+  background-color: #005757;
+}

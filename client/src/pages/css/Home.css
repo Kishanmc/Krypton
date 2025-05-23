@@ -1,0 +1,324 @@
+/* General Styles */
+.home {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    color: #fff;
+    background-color: #121212;
+    padding: 20px;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(120deg, #1f1c2c, #3b2f5e);
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.logo {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin: 10px 0 20px;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background-color: #ff4081;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #d81b60;
+}
+
+.btn-secondary {
+    background-color: #3b2f5e;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #2a1e4a;
+}
+
+/* Features Section */
+.features {
+    margin-top: 40px;
+    padding: 40px 20px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+}
+
+.features h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.feature-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.feature-item {
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: scale(1.05);
+}
+
+.feature-item span {
+    font-size: 2rem;
+}
+
+/* About Section */
+.about {
+    margin-top: 40px;
+    padding: 40px 20px;
+    background-color: #2b1f38;
+    border-radius: 10px;
+}
+
+.about img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* Game Section */
+.games {
+    margin-top: 40px;
+    padding: 40px 20px;
+    background-color: #1f2a38;
+    border-radius: 10px;
+}
+
+.games h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.game-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.game-item {
+    background: #222;
+    padding: 15px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.game-item img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Demo Section */
+.demo {
+    margin-top: 40px;
+    padding: 40px;
+    background-color: #3a1e2f;
+    border-radius: 10px;
+}
+
+.demo h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.demo-video {
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* Call to Action */
+.cta {
+    margin-top: 40px;
+    padding: 40px;
+    background: linear-gradient(120deg, #3b2f5e, #1f1c2c);
+    border-radius: 10px;
+}
+
+.cta h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Footer */
+.footer {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #000;
+    text-align: center;
+    border-radius: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature-list {
+        grid-template-columns: 1fr;
+    }
+
+    .game-list {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+/* Poster Section */
+.poster {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    padding: 10px;
+    max-width: 100%;
+}
+
+/* Poster Image */
+.poster-img {
+    width: 100%;
+    max-width: 900px; /* Ensures it doesn't get too large */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.poster-img:hover {
+    transform: scale(1.03);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .poster {
+        padding: 5px;
+    }
+
+    .poster-img {
+        width: 90%; /* Adjust width for smaller screens */
+    }
+}
+/* Trending Topics Section */
+.trending {
+    background: #1e272e; /* Dark blue-grey background */
+    color: #ffffff;
+    text-align: center;
+    padding: 50px 20px;
+    border-radius: 15px;
+    margin: 20px auto;
+    max-width: 900px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Section Title */
+.trending h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #ffcc00; /* Golden Yellow */
+}
+
+/* Topic List */
+.trending ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Topic List Items */
+.trending li {
+    font-size: 1.1rem;
+    font-weight: 500;
+    background: #ffcc00; /* Golden Yellow */
+    color: #1e272e;
+    padding: 12px 18px;
+    border-radius: 10px;
+    margin: 5px;
+    width: fit-content;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 3px 3px 10px rgba(255, 204, 0, 0.4);
+}
+
+/* Hover Effect */
+.trending li:hover {
+    background: #ffdd44; /* Lighter Yellow */
+    transform: scale(1.08);
+    box-shadow: 5px 5px 15px rgba(255, 204, 0, 0.6);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .trending {
+        padding: 40px 15px;
+    }
+
+    .trending h2 {
+        font-size: 2rem;
+    }
+
+    .trending ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .trending li {
+        font-size: 1rem;
+        width: 80%;
+    }
+}
