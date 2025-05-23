@@ -21,6 +21,7 @@ import SimulationPage from "./component/PhysicsLab/SimulationPage";
 import PhysicsLab from "./component/PhysicsLab/PhysicsLab";
 import ChemistrySimulationPage from "./component/ChemistryLab/ChemistrySimulationPage";
 import Ani from "./pages/ani";
+import GameSector from "./pages/GameSector";
 
 
 
@@ -44,7 +45,7 @@ function App() {
 <Route path="/lab/biology/:toolId" element={<BiologyToolViewer />} />
  <Route path="/lab/physics/:title" element={<SimulationPage />} />
   <Route path="/lab/chemistry/:title" element={<ChemistrySimulationPage />} />
-   -a 
+    <Route path="/games/:sector" element={<GameSector />} />
         </Routes>
       </div>
     </Router>
