@@ -4,7 +4,6 @@ import { OrbitControls } from '@react-three/drei';
 import AtomModel from './AtomModel';
 import WaveModel from './wave';
 import PendulumModel from './PendulumModel';
-const GEMINI_API_KEY = "AIzaSyCRu85W-xWLGjsCaMCfiylOa_5IW53KgUI";
 
 const Ani = () => {
   const [text, setText] = useState('');
@@ -60,24 +59,81 @@ const Ani = () => {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h2>🧪 3D Science Explainer</h2>
+    <div style={{
+      padding: '5vw',
+      maxWidth: '1000px',
+      margin: '0 auto',
+      fontFamily: 'Poppins, sans-serif',
+      color: '#f1f1f1',
+      backgroundColor: '#1e1e2f',
+      borderRadius: '12px',
+      boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
+      boxSizing: 'border-box'
+    }}>
+      <h2 style={{
+        fontSize: 'clamp(1.5rem, 5vw, 2.5rem)',
+        marginBottom: '1rem',
+        textAlign: 'center',
+        color: '#00d1ff'
+      }}>
+        🧪 3D Science Explainer
+      </h2>
 
       <textarea
         placeholder="Type something like: Structure of an atom"
         value={text}
         onChange={(e) => setText(e.target.value)}
         rows={4}
-        style={{ width: '100%', padding: '10px', fontSize: '16px' }}
+        style={{
+          width: '100%',
+          padding: '15px',
+          fontSize: 'clamp(14px, 2vw, 18px)',
+          borderRadius: '8px',
+          border: 'none',
+          marginBottom: '1rem',
+          outline: 'none',
+          resize: 'none',
+          backgroundColor: '#2a2a40',
+          color: '#f1f1f1',
+          boxSizing: 'border-box'
+        }}
       />
 
-      <button onClick={handlePlay} style={{ marginTop: '10px', padding: '10px 20px' }}>
+      <button
+        onClick={handlePlay}
+        style={{
+          backgroundColor: '#00d1ff',
+          color: '#1e1e2f',
+          padding: '10px 20px',
+          fontSize: 'clamp(14px, 2vw, 18px)',
+          fontWeight: 'bold',
+          border: 'none',
+          borderRadius: '8px',
+          cursor: 'pointer',
+          marginBottom: '1rem',
+          transition: 'all 0.3s ease',
+          width: '100%',
+        }}
+      >
         ▶️ Explain & Animate
       </button>
 
-      <p><strong>Explanation:</strong> {explanation}</p>
+      <p style={{
+        fontSize: 'clamp(14px, 2vw, 18px)',
+        marginBottom: '20px',
+        lineHeight: '1.5'
+      }}>
+        <strong style={{ color: '#00ffc3' }}>Explanation:</strong> {explanation}
+      </p>
 
-      <div style={{ height: '400px', marginTop: '20px' }}>
+      <div style={{
+        height: '60vh',
+        minHeight: '300px',
+        backgroundColor: '#121222',
+        borderRadius: '10px',
+        overflow: 'hidden',
+        width: '100%'
+      }}>
         <Canvas>
           <ambientLight intensity={0.5} />
           <pointLight position={[10, 10, 10]} />
