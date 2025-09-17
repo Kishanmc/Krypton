@@ -1,7 +1,7 @@
 import React from 'react';
 
 const WaveModel = () => {
-  const wavePoints = Array.from({ length: 100 }, (_, i) => {
+  const wavePoints = Array.from({ length: 1000 }, (_, i) => {
     const x = i * 0.2 - 10;
     const y = Math.sin(i * 0.3) * 0.5;
     return [x, y, 0];
@@ -17,7 +17,7 @@ const WaveModel = () => {
           itemSize={3}
         />
       </bufferGeometry>
-      <lineBasicMaterial color="orange" />
+      <lineBasicMaterial color="red" />
     </line>
   );
 };

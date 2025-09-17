@@ -24,7 +24,7 @@ const Login = () => {
     const endpoint = isSignup ? "/signup" : "/login";
 
     try {
-      const response = await fetch(`http://localhost:4000${endpoint}`, {
+      const response = await fetch(`http://localhost:4000/api/auth${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
