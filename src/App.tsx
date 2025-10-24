@@ -2,8 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
-import ChemistryLab from './pages/ChemistryLab';
-import PhysicsLab from './pages/PhysicsLab';
+import Dashboard from './pages/Dashboard';
+import Payments from './pages/Payments';
+import Investments from './pages/Investments';
+import Leaderboard from './pages/Leaderboard';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -12,8 +15,11 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/chemistry" element={<ChemistryLab />} />
-          <Route path="/physics" element={<PhysicsLab />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/payments" element={<Payments />} />
+          <Route path="/investments" element={<Investments />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
         </Routes>
       </div>
     </Router>
