@@ -1,48 +1,197 @@
+/* Neurodivergent-Friendly 3D Lab Design */
+/* Consistent with other labs: High contrast, calming colors, clear hierarchy */
+
 .lab3d-container {
   text-align: center;
-  padding: 3rem 2rem;
-  background: linear-gradient(to right, #1c1c3c, #2a003f);
+  padding: 4rem 3rem;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
   min-height: 100vh;
-  color: white;
-  font-family: 'Segoe UI', sans-serif;
+  color: #ffffff;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
 }
 
 .lab3d-container h2 {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #e8f4f8;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
 }
 
 .lab-grid {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
-  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .lab-card {
-  background-color: #111;
-  border-radius: 12px;
+  background: linear-gradient(145deg, #2c3e50 0%, #34495e 100%);
+  border-radius: 16px;
   overflow: hidden;
-  width: 280px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 3px solid transparent;
+  position: relative;
 }
 
 .lab-card:hover {
-  transform: scale(1.05);
+  transform: translateY(-4px);
+  border-color: #3498db;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(52, 152, 219, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.lab-card:focus {
+  outline: none;
+  border-color: #e74c3c;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 4px rgba(231, 76, 60, 0.3);
+}
+
+.lab-card:active {
+  transform: translateY(-2px);
+  transition: all 0.1s ease;
 }
 
 .lab-card img {
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
+  border-bottom: 2px solid #3498db;
 }
 
 .lab-label {
-  padding: 1rem;
-  background-color: #000;
-  color: #fff;
-  font-weight: bold;
-  font-size: 1.2rem;
+  padding: 2rem;
+  background: linear-gradient(145deg, #34495e 0%, #2c3e50 100%);
+  color: #ecf0f1;
+  font-weight: 600;
+  font-size: 1.3rem;
+  text-align: center;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Enhanced accessibility for neurodivergent users */
+@media (prefers-reduced-motion: reduce) {
+  .lab-card,
+  .lab-card:hover,
+  .lab-card:active {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .lab3d-container {
+    background: #000000;
+    color: #ffffff;
+  }
+
+  .lab-card {
+    background: #ffffff;
+    border: 3px solid #000000;
+  }
+
+  .lab-card:hover {
+    background: #000000;
+    border-color: #ffffff;
+  }
+
+  .lab-label {
+    background: #000000;
+    color: #ffffff;
+  }
+
+  .lab-card img {
+    border-bottom-color: #ffffff;
+  }
+}
+
+/* Responsive design for different screen sizes */
+@media (max-width: 768px) {
+  .lab3d-container {
+    padding: 2rem 1.5rem;
+  }
+
+  .lab3d-container h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .lab-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .lab-card img {
+    height: 180px;
+  }
+
+  .lab-label {
+    padding: 1.5rem;
+    font-size: 1.1rem;
+    min-height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .lab3d-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .lab3d-container h2 {
+    font-size: 1.8rem;
+  }
+
+  .lab-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lab-card img {
+    height: 160px;
+  }
+
+  .lab-label {
+    padding: 1.2rem;
+    font-size: 1rem;
+  }
+}
+
+/* Print styles for accessibility */
+@media print {
+  .lab3d-container {
+    background: white !important;
+    color: black !important;
+  }
+
+  .lab-card {
+    background: white !important;
+    border: 2px solid black !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+
+  .lab-card img {
+    display: none !important;
+  }
+
+  .lab-label {
+    background: white !important;
+    color: black !important;
+    border-top: 1px solid black !important;
+  }
 }
