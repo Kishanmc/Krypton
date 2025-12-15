@@ -1,63 +1,294 @@
+/* Neurodivergent-Friendly Chat Interface Design */
+/* Accessible voice interaction with clear visual feedback and high contrast */
+
 .chat-container {
   max-width: 600px;
   margin: 40px auto;
-  padding: 30px;
-  background: #f9f9ff;
-  border-radius: 15px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  padding: 3rem;
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+  border: 3px solid #34495e;
+  border-radius: 20px;
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
   text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  position: relative;
+}
+
+.chat-container::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(45deg, #3498db, #2980b9, #1abc9c);
+  border-radius: 23px;
+  z-index: -1;
+  opacity: 0.1;
 }
 
 .chat-logo {
-  width: 80px;
+  width: 100px;
   border-radius: 50%;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
+  border: 4px solid #3498db;
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
 }
 
 .chat-title {
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #333;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  letter-spacing: 0.5px;
 }
 
 .chat-name {
-  color: #4a90e2;
-  font-weight: bold;
+  color: #3498db;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .chat-button {
-  margin: 20px 0;
-  padding: 12px 20px;
-  font-size: 16px;
-  background: #4a90e2;
-  color: white;
-  border: none;
-  border-radius: 30px;
+  margin: 2rem 0;
+  padding: 16px 24px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  color: #ffffff;
+  border: 3px solid transparent;
+  border-radius: 50px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  transition: background 0.3s ease;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 60px;
+  position: relative;
+  overflow: hidden;
 }
 
-.chat-button:hover {
-  background: #357abd;
+.chat-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.chat-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2980b9 0%, #21618c 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(52, 152, 219, 0.3);
+}
+
+.chat-button:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.chat-button:focus {
+  outline: none;
+  border-color: #e74c3c;
+  box-shadow:
+    0 8px 24px rgba(52, 152, 219, 0.3),
+    0 0 0 4px rgba(231, 76, 60, 0.3);
+}
+
+.chat-button:active {
+  transform: translateY(0);
+  transition: all 0.1s ease;
+}
+
+.chat-button:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+  box-shadow: none;
 }
 
 .mic-icon {
-  width: 24px;
-  margin-right: 10px;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
 }
 
 .voice-animation {
-  width: 60px;
-  margin: 20px auto;
+  width: 80px;
+  margin: 2rem auto;
   display: block;
+  filter: drop-shadow(0 4px 8px rgba(52, 152, 219, 0.3));
 }
 
 .chat-text {
-  font-size: 16px;
-  margin-top: 10px;
-  color: #555;
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+  color: #34495e;
   word-break: break-word;
+  font-weight: 500;
+  padding: 1rem;
+  background: rgba(52, 152, 219, 0.1);
+  border-radius: 12px;
+  border: 2px solid rgba(52, 152, 219, 0.2);
+}
+
+.chat-error {
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+  color: #e74c3c;
+  word-break: break-word;
+  font-weight: 600;
+  padding: 1rem;
+  background: rgba(231, 76, 60, 0.1);
+  border-radius: 12px;
+  border: 2px solid rgba(231, 76, 60, 0.2);
+}
+
+/* Enhanced accessibility for neurodivergent users */
+@media (prefers-reduced-motion: reduce) {
+  .chat-button,
+  .chat-button::before,
+  .chat-button:hover:not(:disabled),
+  .chat-button:active {
+    transition: none;
+    transform: none;
+  }
+
+  .voice-animation {
+    animation: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .chat-container {
+    background: #ffffff;
+    border: 4px solid #000000;
+  }
+
+  .chat-title {
+    color: #000000;
+  }
+
+  .chat-name {
+    color: #000000;
+  }
+
+  .chat-button {
+    background: #000000;
+    color: #ffffff;
+    border: 3px solid #000000;
+  }
+
+  .chat-button:hover:not(:disabled) {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .chat-text {
+    background: #ffffff;
+    color: #000000;
+    border: 3px solid #000000;
+  }
+
+  .chat-error {
+    background: #ffffff;
+    color: #000000;
+    border: 3px solid #000000;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .chat-container {
+    margin: 20px;
+    padding: 2rem;
+  }
+
+  .chat-title {
+    font-size: 2rem;
+  }
+
+  .chat-button {
+    padding: 14px 20px;
+    font-size: 1.1rem;
+    min-height: 55px;
+  }
+
+  .mic-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .voice-animation {
+    width: 60px;
+  }
+
+  .chat-text,
+  .chat-error {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-container {
+    margin: 10px;
+    padding: 1.5rem;
+  }
+
+  .chat-logo {
+    width: 80px;
+  }
+
+  .chat-title {
+    font-size: 1.8rem;
+  }
+
+  .chat-button {
+    padding: 12px 18px;
+    font-size: 1rem;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 80px;
+  }
+
+  .mic-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .voice-animation {
+    width: 50px;
+  }
+
+  .chat-text,
+  .chat-error {
+    font-size: 0.9rem;
+  }
+}
+
+/* Print styles for accessibility */
+@media print {
+  .chat-container {
+    background: white !important;
+    border: 2px solid black !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+
+  .chat-button {
+    display: none !important;
+  }
+
+  .voice-animation {
+    display: none !important;
+  }
 }

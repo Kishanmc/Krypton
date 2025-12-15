@@ -5,7 +5,6 @@ import "./App.css";
 import Navbar from "./component/navbar/navbar";
 import Home from "./pages/home";
 import Games from "./pages/games";
-import Login from "./pages/login";
 import About from "./pages/about";
 import Chart from "./pages/chart";
 import ChemistryLab from "./component/ChemistryLab/ChemistryLab";
@@ -30,7 +29,6 @@ function App() {
           <Route path="/3danimation" element={<Ani />} />
           <Route path="/games" element={<Games />} />
           <Route path="/chat" element={<Chart />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/about" element={<About />} />
           <Route path="/lab/physics" element={<PhysicsLab />} />
 <Route path="/lab/chemistry" element={<ChemistryLab />} />

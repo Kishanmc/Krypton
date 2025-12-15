@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./css/chart.css";
 import logo from "../component/assets/logo.jpg";
 import voiceGif from "../component/assets/voice.gif";
 import micIcon from "../component/assets/mic.svg";
- import { useEffect } from "react";
-const GEMINI_API_KEY = "AIzaSyCRu85W-xWLGjsCaMCfiylOa_5IW53KgUI";
+const GEMINI_API_KEY = "AXXXI";
 
 const Chat = () => {
   const [transcript, setTranscript] = useState("");
   const [response, setResponse] = useState("");
   const [listening, setListening] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
  
 
@@ -61,13 +62,16 @@ const startListening = () => {
   recognition.onerror = (event) => {
     console.error("Speech recognition error:", event.error);
     setListening(false);
-    alert("Speech recognition error: " + event.error);
+    setError(`Speech recognition error: ${event.error}`);
   };
 
   recognition.start();
 };
 
   const fetchGeminiResponse = async (query) => {
+    setIsLoading(true);
+    setError("");
+
     let url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
     let body = {
       contents: [{ parts: [{ text: query }] }],
@@ -79,13 +83,23 @@ const startListening = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
+
+      if (!res.ok) {
+        throw new Error(`API request failed: ${res.status}`);
+      }
+
       let data = await res.json();
       let result = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't find an answer.";
       setResponse(result);
       speak(result);
     } catch (error) {
-      setResponse("There was an error fetching data.");
-      speak("There was an error fetching data.");
+      console.error("Gemini API error:", error);
+      const errorMessage = "There was an error fetching data. Please try again.";
+      setResponse(errorMessage);
+      setError("Failed to get response from AI assistant");
+      speak(errorMessage);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -120,9 +134,11 @@ const startListening = () => {
         I'm <span className="chat-name">Nikki</span>, Your Virtual Assistant
       </h1>
       {listening && <img src={voiceGif} alt="voice animation" className="voice-animation" />}
-      <button onClick={startListening} className="chat-button">
-        <img src={micIcon} alt="mic" className="mic-icon" /> Click here to talk to me
+      <button onClick={startListening} className="chat-button" disabled={listening || isLoading}>
+        <img src={micIcon} alt="mic" className="mic-icon" />
+        {listening ? "Listening..." : isLoading ? "Processing..." : "Click here to talk to me"}
       </button>
+      {error && <p className="chat-error"><strong>Error:</strong> {error}</p>}
       <p className="chat-text"><strong>You said:</strong> {transcript}</p>
       <p className="chat-text"><strong>Response:</strong> {response}</p>
     </div>

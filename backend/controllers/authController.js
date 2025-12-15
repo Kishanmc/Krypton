@@ -6,22 +6,44 @@ const generateToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET, { expires
 
 exports.register = async (req, res) => {
   const { name, email, password, role } = req.body;
-  let user = await User.findOne({ email });
-  if (user) return res.status(400).json({ msg: 'User already exists' });
+  try {
+    let user = await User.findOne({ email });
+    if (user) return res.status(400).json({ success: false, errors: 'User already exists' });
 
-  user = new User({ name, email, password, role: role || 'user' });
-  await user.save();
+    user = new User({ name, email, password, role: role || 'student' });
+    await user.save();
 
-  res.json({ token: generateToken(user._id), role: user.role });
+    res.json({ success: true, token: generateToken(user._id), role: user.role });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
 };
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;
-  const user = await User.findOne({ email });
-  if (!user) return res.status(400).json({ msg: 'Invalid credentials' });
+  try {
+    const user = await User.findOne({ email });
+    if (!user) return res.status(400).json({ success: false, errors: 'User not found' });
 
-  const isMatch = await bcrypt.compare(password, user.password);
-  if (!isMatch) return res.status(400).json({ msg: 'Invalid credentials' });
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) return res.status(400).json({ success: false, errors: 'Invalid password' });
 
-  res.json({ token: generateToken(user._id), role: user.role });
+    res.json({ success: true, token: generateToken(user._id), role: user.role });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+};
+
+exports.getProfile = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const user = await User.findById(userId).select('-password');
+    if (!user) return res.status(404).json({ message: 'User not found' });
+    res.json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: 'Internal server error' });
+  }
 };
